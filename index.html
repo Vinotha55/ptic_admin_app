@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PTIC Admin Portal – Poultry Technology & Innovation Community</title>
+  <meta name="description" content="Central Management and Control Center for the Poultry Technology & Innovation Community (PTIC)">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'></text></svg>">
+  <script type="module" crossorigin src="/assets/index-CvwrXcq3.js"></script>
+  <link rel="stylesheet" crossorigin href="/assets/index-B1PDK8xk.css">
+</head>
+<body>
+
+  <!-- =========================================================
+       ADMIN LOGIN SCREEN (Shown first by default)
+       ========================================================= -->
+  <div id="loginScreen" class="login-screen" style="display: flex;">
+    <div class="login-card">
+      <div class="login-header">
+        <div class="login-logo-badge">P</div>
+        <h1>PTIC Admin</h1>
+        <p>Sign in to manage the PTIC platform</p>
+      </div>
+
+      <div class="demo-credentials-pill">
+        <span>Demo: <strong>admin@ptic.demo</strong></span>
+        <span>Pass: <strong>admin123</strong></span>
+      </div>
+
+      <div id="loginAlert" class="login-alert"></div>
+
+      <form id="loginForm">
+        <div class="form-group">
+          <label class="form-label" for="loginEmail">Email Address</label>
+          <input type="email" id="loginEmail" class="form-input" placeholder="admin@ptic.demo" value="admin@ptic.demo" required>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="loginPassword">Password</label>
+          <input type="password" id="loginPassword" class="form-input" placeholder="Enter password" value="admin123" required>
+        </div>
+
+        <div class="form-group" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px;">
+          <label class="form-check">
+            <input type="checkbox" id="rememberMe" checked>
+            <span>Remember me</span>
+          </label>
+          <a href="#" id="forgotPasswordLink" style="font-size: 13px;">Forgot Password?</a>
+        </div>
+
+        <button type="submit" id="signInBtn" class="btn btn-primary btn-full btn-lg">
+          <span>Sign In to Admin Portal</span>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- =========================================================
+       ADMIN APP SHELL (Sidebar + Top Header + Main Content)
+       ========================================================= -->
+  <div id="appShell" class="app-container" style="display: none;">
+    
+    <!-- LEFT SIDEBAR -->
+    <aside id="sidebar" class="sidebar">
+      <div class="sidebar-header">
+        <div class="sidebar-logo-icon">P</div>
+        <div class="sidebar-brand-text">
+          <h2>PTIC</h2>
+          <p>Admin Portal</p>
+        </div>
+      </div>
+
+      <nav class="sidebar-nav" id="sidebarNav">
+        <a class="nav-item active" data-page="dashboard" id="nav-dashboard">
+          <span class="nav-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+          </span>
+          <span>Dashboard</span>
+        </a>
+
+        <a class="nav-item" data-page="companies" id="nav-companies">
+          <span class="nav-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="16" height="20" x="4" y="2" rx="2" ry="2"></rect><path d="M9 22v-4h6v4"></path><path d="M8 6h.01"></path><path d="M16 6h.01"></path><path d="M12 6h.01"></path><path d="M12 10h.01"></path><path d="M12 14h.01"></path><path d="M16 10h.01"></path><path d="M16 14h.01"></path><path d="M8 10h.01"></path><path d="M8 14h.01"></path></svg>
+          </span>
+          <span>Companies</span>
+        </a>
+
+        <a class="nav-item" data-page="members" id="nav-members">
+          <span class="nav-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M22 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+          </span>
+          <span>Members</span>
+        </a>
+
+        <a class="nav-item" data-page="products" id="nav-products">
+          <span class="nav-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m7.5 4.27 9 5.15"></path><path d="M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z"></path><path d="m3.3 7 8.7 5 8.7-5"></path><path d="M12 22V12"></path></svg>
+          </span>
+          <span>Products & Services</span>
+        </a>
+
+        <a class="nav-item" data-page="qa" id="nav-qa">
+          <span class="nav-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><path d="9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path><path d="M12 17h.01"></path></svg>
+          </span>
+          <span>Ask Experts</span>
+          <span class="nav-badge" id="navReportBadge" style="display:none;">1</span>
+        </a>
+
+        <a class="nav-item" data-page="events" id="nav-events">
+          <span class="nav-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="4" rx="2" ry="2"></rect><line x1="16" x2="16" y1="2" y2="6"></line><line x1="8" x2="8" y1="2" y2="6"></line><line x1="3" x2="21" y1="10" y2="10"></line></svg>
+          </span>
+          <span>Events</span>
+        </a>
+
+        <a class="nav-item" data-page="membership" id="nav-membership">
+          <span class="nav-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="14" x="2" y="5" rx="2"></rect><line x1="2" x2="22" y1="10" y2="10"></line></svg>
+          </span>
+          <span>Membership</span>
+        </a>
+
+        <a class="nav-item" data-page="permissions" id="nav-permissions">
+          <span class="nav-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="11" x="3" y="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+          </span>
+          <span>Permissions</span>
+        </a>
+
+        <a class="nav-item" data-page="enquiries" id="nav-enquiries">
+          <span class="nav-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"></rect><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path></svg>
+          </span>
+          <span>Enquiries</span>
+        </a>
+
+        <a class="nav-item" data-page="notifications" id="nav-notifications">
+          <span class="nav-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"></path><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"></path></svg>
+          </span>
+          <span>Notifications</span>
+        </a>
+
+        <a class="nav-item" data-page="settings" id="nav-settings">
+          <span class="nav-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
+          </span>
+          <span>Settings</span>
+        </a>
+      </nav>
+
+      <div class="sidebar-footer">
+        <div class="sidebar-profile">
+          <img id="sidebarAvatar" src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=256&q=80" alt="Admin" class="sidebar-avatar">
+          <div class="sidebar-user-info">
+            <div id="sidebarAdminName" class="sidebar-user-name">PTIC Administrator</div>
+            <div class="sidebar-status">
+              <span class="sidebar-status-dot"></span>
+              <span>Online</span>
+            </div>
+          </div>
+        </div>
+        <button id="sidebarLogoutBtn" class="sidebar-logout-btn">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path><polyline points="16 17 21 12 16 7"></polyline><line x1="21" x2="9" y1="12" y2="12"></line></svg>
+          <span>Logout</span>
+        </button>
+      </div>
+    </aside>
+
+    <!-- MAIN CONTENT AREA -->
+    <div class="main-wrapper">
+      
+      <!-- TOP HEADER -->
+      <header class="top-header">
+        <div class="header-left">
+          <button id="mobileMenuToggle" class="sidebar-toggle-btn" aria-label="Toggle menu">☰</button>
+          <div class="page-title-box">
+            <h1 id="headerPageTitle">Dashboard</h1>
+            <p id="headerPageSubtitle">Overview of PTIC platform activity</p>
+          </div>
+        </div>
+
+        <div class="header-right">
+          <!-- Global Search -->
+          <div class="global-search-container">
+            <div class="search-input-wrapper">
+              <span class="search-icon">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" x2="16.65" y1="21" y2="16.65"></line></svg>
+              </span>
+              <input type="text" id="globalSearchInput" class="global-search-input" placeholder="Search PTIC (Members, Companies, Products...)" autocomplete="off">
+            </div>
+            <!-- Search Results Dropdown -->
+            <div id="searchResultsDropdown" class="search-results-dropdown"></div>
+          </div>
+
+          <!-- Notification Bell -->
+          <div style="position: relative;">
+            <button id="headerNotifBtn" class="header-icon-btn" title="Recent Notifications">
+              <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"></path><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"></path></svg>
+              <span class="header-badge" id="headerNotifCount">3</span>
+            </button>
+            <div id="headerNotifMenu" class="header-dropdown-menu">
+              <div class="dropdown-header">
+                <h4>Recent Broadcasts & Alerts</h4>
+                <a href="#" id="viewAllNotifsLink" style="font-size: 12px;">View All</a>
+              </div>
+              <div class="dropdown-list" id="headerNotifList"></div>
+            </div>
+          </div>
+
+          <!-- Admin Profile Dropdown -->
+          <div style="position: relative;">
+            <button id="headerUserBtn" class="header-user-btn">
+              <img id="headerUserAvatar" src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=256&q=80" alt="Avatar" class="header-user-avatar">
+              <span id="headerUserName" class="header-user-name">PTIC Administrator</span>
+              <span style="font-size: 10px; color: var(--slate-400);">▼</span>
+            </button>
+            <div id="profileDropdownMenu" class="profile-dropdown-menu">
+              <div class="profile-menu-item" id="menuItemProfile">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+                <span>My Profile</span>
+              </div>
+              <div class="profile-menu-item" id="menuItemSettings">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
+                <span>Settings</span>
+              </div>
+              <div class="profile-menu-item danger" id="menuItemLogout">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path><polyline points="16 17 21 12 16 7"></polyline><line x1="21" x2="9" y1="12" y2="12"></line></svg>
+                <span>Logout</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </header>
+
+      <!-- DYNAMIC MAIN CONTENT VIEWPORT -->
+      <main id="mainContent" class="main-content">
+        <!-- Rendered dynamically by JavaScript -->
+      </main>
+
+    </div>
+  </div>
+
+  <!-- =========================================================
+       GLOBAL MODAL DIALOGS CONTAINER
+       ========================================================= -->
+  <div id="modalOverlay" class="modal-overlay">
+    <div id="modalCard" class="modal-card">
+      <div class="modal-header">
+        <h3 id="modalTitle">Modal Title</h3>
+        <button id="modalCloseBtn" class="modal-close-btn">&times;</button>
+      </div>
+      <div id="modalBody" class="modal-body">
+        <!-- Injected dynamic form / details -->
+      </div>
+      <div id="modalFooter" class="modal-footer">
+        <!-- Injected buttons -->
+      </div>
+    </div>
+  </div>
+
+  <!-- =========================================================
+       CONFIRMATION DIALOG MODAL
+       ========================================================= -->
+  <div id="confirmOverlay" class="modal-overlay">
+    <div class="modal-card" style="max-width: 440px;">
+      <div class="modal-body">
+        <div class="confirm-box">
+          <div id="confirmIcon" class="confirm-icon"></div>
+          <h3 id="confirmTitle">Confirm Action</h3>
+          <p id="confirmMessage">Are you sure you want to proceed?</p>
+          <div style="display: flex; gap: 12px; justify-content: center;">
+            <button id="confirmCancelBtn" class="btn btn-secondary">Cancel</button>
+            <button id="confirmActionBtn" class="btn btn-danger">Confirm</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- =========================================================
+       TOAST MESSAGES CONTAINER
+       ========================================================= -->
+  <div id="toastContainer" class="toast-container"></div>
+
+  <!-- Main JavaScript App Entrypoint -->
+</body>
+</html>
